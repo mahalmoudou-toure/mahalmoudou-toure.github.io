@@ -7,8 +7,6 @@
   <!-- Lien vers le fichier CSS principal -->
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="ib.png" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2419487109419024"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -29,6 +27,21 @@
       <button class="btn ghost" id="btn-reset">Réinitialiser (dev)</button>
     </div>
   </header>
+
+  <!-- ========================= VIDEO DE PRESENTATION ========================= -->
+<section class="video-section">
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Ton navigateur ne supporte pas la vidéo HTML5.
+    </video>
+    <div class="video-overlay">
+      <h2>Bienvenue dans le bibliothèque CAS</h2>
+      <p>Découvrez la créativité, l’activité et le service.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- ========================= CONTENU PRINCIPAL ========================= -->
   <main>
@@ -132,11 +145,12 @@
 <!-- Liste des projets -->
 <div class="list-grid" id="projects-list"></div>
 
-
   <!-- ========================= SCRIPT JS ========================= -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
+
+
 
 
 
