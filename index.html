@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Base CAS — Prototype</title>
+  <!-- Lien vers le fichier CSS principal -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========================= HEADER ========================= -->
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="ib.png" alt="Logo IB" />
+      </div>
+      <div class="brand-text">
+        <h1>Enko Dakar</h1>
+        <p class="lead">Créativité / Activité / Service</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn" id="btn-add">+ Ajouter ton projet</button>
+      <button class="btn ghost" id="btn-reset">Réinitialiser (dev)</button>
+    </div>
+  </header>
+
+  <!-- ========================= CONTENU PRINCIPAL ========================= -->
+  <main>
+
+    <!-- PAGE D'ACCUEIL -->
+    <section id="home">
+      <div class="grid3">
+        <div class="cat-card" data-cat="Creativity">
+          <div class="cat-emoji">🎨</div>
+          <div class="cat-title">Créativité</div>
+          <div class="cat-desc">Projets artistiques, clubs, théâtre, design…</div>
+        </div>
+        <div class="cat-card" data-cat="Activity">
+          <div class="cat-emoji">🏃</div>
+          <div class="cat-title">Activité</div>
+          <div class="cat-desc">Sports, défis, randonnées, entraînements…</div>
+        </div>
+        <div class="cat-card" data-cat="Service">
+          <div class="cat-emoji">🤝</div>
+          <div class="cat-title">Service</div>
+          <div class="cat-desc">Bénévolat, aide communautaire, tutorat…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTE DES PROJETS PAR CATÉGORIE -->
+    <section id="category" style="display:none">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <div>
+          <h2 id="cat-title">Catégorie</h2>
+          <p class="lead" id="cat-sub">Tous les projets</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn" id="back-home">⏎</button>
+          <button class="btn" id="add-from-cat">+</button>
+        </div>
+      </div>
+      <div class="list-grid" id="projects-list"></div>
+    </section>
+
+    <!-- FORMULAIRE AJOUT DE PROJET -->
+    <section id="add" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <div>
+          <h2>Ajouter un projet</h2>
+          <p class="lead">Remplis le formulaire pour partager ton projet avec les autres élèves.</p>
+        </div>
+        <div>
+          <button class="btn" id="cancel-add">Annuler</button>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; background:var(--card); padding:14px; border-radius:12px;">
+        <form id="form-project">
+          <div>
+            <label>Créateur / Nom de l'élève</label>
+            <input required id="p-owner" placeholder="Ton nom" />
+          </div>
+          <div>
+            <label>Titre</label>
+            <input required id="p-title" placeholder="Nom du projet" />
+          </div>
+          <div>
+            <label>Catégorie</label>
+            <select id="p-cat">
+              <option value="Creativity">Créativité</option>
+              <option value="Activity">Activité</option>
+              <option value="Service">Service</option>
+            </select>
+          </div>
+          <div>
+            <label>Durée (ex: 2 semaines, 3 mois)</label>
+            <input required id="p-duration" placeholder="Durée" />
+          </div>
+          <div>
+            <label>Description</label>
+            <textarea required id="p-desc" placeholder="Explique le projet, objectifs, étapes..."></textarea>
+          </div>
+          <div>
+            <label>Conseils / Retours d'expérience (facultatif)</label>
+            <textarea id="p-tips" placeholder="Ce que tu as appris, ce qui a marché / pas marché"></textarea>
+          </div>
+          <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:8px;">
+            <button class="btn ghost" type="button" id="btn-clear-form">Effacer</button>
+            <button class="btn" type="submit">Publier</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE DÉTAIL -->
+  <div class="modal" id="modal">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="btn ghost" id="close-modal">Fermer</button>
+      <div id="modal-content" style="margin-top:12px;"></div>
+    </div>
+  </div>
+
+
+<!-- Liste des projets -->
+<div class="list-grid" id="projects-list"></div>
+
+
+  <!-- ========================= SCRIPT JS ========================= -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

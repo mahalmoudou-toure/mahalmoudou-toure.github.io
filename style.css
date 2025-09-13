@@ -1,0 +1,306 @@
+/* =========================================================
+   VARIABLES GLOBALES
+   ========================================================= */
+   :root {
+    --bg: #0f172a;          /* Couleur de fond principale */
+    --card: #1a2030;        /* Couleur des cartes / sections */
+    --accent: #7c3aed;      /* Couleur principale / accent */
+    --muted: #94a3b8;       /* Couleur des textes secondaires */
+    --glass: rgba(255,255,255,0.04); /* Effet "verre" pour cartes */
+}
+
+/* =========================================================
+   RESET & BOX-SIZING
+   ========================================================= */
+* { 
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 10px;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: var(--bg);
+    color: #e6edf3;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+header {
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Marque / logo */
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: transparent;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-text h1 {
+    font-size: 18px;
+    margin: 0;
+    color: #e6edf3;
+}
+
+.brand-text p.lead {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Boutons en haut */
+.top-actions { display: flex; gap: 12px; align-items: center; }
+
+.btn {
+    background: linear-gradient(90deg, var(--accent), #5b21b6);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover { opacity: 0.9; }
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+main {
+    padding: 60px 30px 30px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   HOME CARDS (Catégories)
+   ========================================================= */
+.grid3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.cat-card {
+    background: var(--glass);
+    padding: 20px;
+    border-radius: 16px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.cat-emoji { font-size: 30px; }
+.cat-title { font-weight: 600; margin-top: 8px; font-size: 16px; }
+.cat-desc { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+/* =========================================================
+   LISTE DES PROJETS
+   ========================================================= */
+.list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    background: #222a3d;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.project-card h3 { margin: 0 0 8px 0; font-size: 18px; color: #ffffff; }
+.meta { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+.project-card p { 
+    color: var(--muted); 
+    font-size: 13px; 
+    line-height: 1.4; 
+    max-height: 70px; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+
+
+/* =========================================================
+   MODAL DE DÉTAIL
+   ========================================================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15,23,42,0.85);
+    backdrop-filter: blur(6px);
+    padding: 20px;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.modal.show { display: flex; }
+
+.modal-card {
+    background: linear-gradient(180deg, #0b1220, #1a2030);
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-card h2 { margin: 0; font-size: 22px; font-weight: 700; color: white; }
+.modal-card .meta { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.modal-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.modal-card h4 { margin-top: 12px; font-size: 16px; color: #ffffff; }
+
+.modal-card .modal-buttons { display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px; }
+.modal-card .modal-buttons .btn { padding: 10px 16px; font-size: 13px; border-radius: 10px; }
+.modal-card .modal-buttons .btn.ghost { border: 1px solid rgba(255,255,255,0.1); }
+
+#close-modal { 
+    align-self: flex-end; 
+    margin-bottom: -10px; 
+    background: transparent; 
+    border: none; 
+    color: var(--muted); 
+    font-size: 14px; 
+    cursor: pointer; 
+}
+
+/* =========================================================
+   FORMULAIRES
+   ========================================================= */
+#add div > form {
+    background: #1a2030;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    display: grid;
+    gap: 16px;
+}
+
+#add label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+#add input, #add select, #add textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+    color: #e6edf3;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+#add input::placeholder, #add textarea::placeholder { color: rgba(255,255,255,0.5); }
+#add input:focus, #add select:focus, #add textarea:focus { border-color: var(--accent); box-shadow: 0 0 8px var(--accent); outline: none; }
+#add textarea { min-height: 140px; resize: vertical; }
+
+#add .btn { padding: 12px 18px; border-radius: 12px; font-size: 14px; }
+#add .btn.ghost { border: 1px solid rgba(255,255,255,0.1); }
+
+#add div[style*="display:flex"] { justify-content: flex-end; gap: 12px; }
+
+/* Style du conteneur */
+#p-cat {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #4CAF50;   /* bordure verte */
+  border-radius: 8px;          /* coins arrondis */
+  background-color: #fff;      /* fond blanc */
+  font-size: 16px;             /* taille du texte */
+  color: #333;                 /* couleur du texte */
+  cursor: pointer;
+  appearance: none;            /* enlève le style natif */
+  outline: none;               /* supprime le contour bleu */
+  transition: all 0.2s ease;
+}
+
+/* Effet au focus (quand on clique dessus) */
+#p-cat:focus {
+  border-color: #2196F3;       /* bleu */
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+/* Pour styliser les options */
+#p-cat option {
+  padding: 10px;
+  background: #fff;
+  color: #333;
+}
+
+
+/* =========================================================
+   BOUTONS CACHÉS
+   ========================================================= */
+#add-from-cat { display: none; }
+#btn-reset { display: none; }
+#btn-delete {display: none;}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px) { 
+    .grid3, .list-grid { grid-template-columns: repeat(2, 1fr); } 
+    header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .top-actions { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 540px) { 
+    .grid3, .list-grid { grid-template-columns: 1fr; } 
+    .brand-text h1 { font-size: 16px; } 
+    .logo { width: 44px; height: 44px; } 
+}
